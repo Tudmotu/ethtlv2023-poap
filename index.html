@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://uploads-ssl.webflow.com/638f6d3a51fdb01e87f23f46/css/ethtlv.webflow.473c6782e.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic%7CNanum+Pen+Script:regular%7CRoboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" />
     <link href="./icon.png?v1" rel="shortcut icon" type="image/png" />
     <script src="./script.js" type="module"></script>
@@ -11,6 +10,10 @@
             display:flex;
             flex-direction:column;
             align-items:center;
+            background-color: #fdf8ec;
+            background-image: url('./bg.svg');
+            background-position: 0px 0px;
+            background-size: auto;
         }
         header {
             display:flex;
@@ -114,6 +117,7 @@
             background:#fff;
             display: flex;
             flex-direction: column;
+            align-items: stretch;
         }
         #gallery::before {
             background:rgba(255, 215, 59, 0.58);
@@ -130,6 +134,9 @@
         #gallery [data-images]::-webkit-scrollbar { 
             display: none;
         }
+        #gallery [data-images] > img {
+            width:100%;
+        }
         #gallery [data-topbar] {
             padding: 1rem 1rem;
             font-size: 2rem;
@@ -140,6 +147,8 @@
         #gallery [data-topbar] [data-close] {
             background:transparent;
             border:0;
+            font-size:3rem;
+            cursor:pointer;
         }
 
         .hidden {
@@ -156,7 +165,7 @@
         <p>
             EthTLV 2023 POAP game lets you climb the leaderboard by collecting POAPs from all the EthTLV side-events!
         </p>
-        <h3 class="handwriting">Leaderboard</h3>
+        <h1 class="handwriting">Leaderboard</h1>
         <section id="leaderboard">
         </section>
     </main>

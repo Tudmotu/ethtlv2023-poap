@@ -40,7 +40,7 @@ table.addEventListener('click', e => {
         const address = poapsContainer.parentNode.querySelector('[data-address]').textContent;
         topbar.innerHTML = `
             <span>${address}</span>
-            <button data-close>X</button>
+            <button data-close class="handwriting">X</button>
         `;
 
         const imagesContainer = document.createElement('div');
