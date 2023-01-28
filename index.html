@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://uploads-ssl.webflow.com/638f6d3a51fdb01e87f23f46/css/ethtlv.webflow.473c6782e.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic%7CNanum+Pen+Script:regular%7CRoboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" />
+    <link href="./icon.png?v1" rel="shortcut icon" type="image/png" />
+    <script src="./script.js" type="module"></script>
+    <style>
+        body {
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+        header {
+            display:flex;
+            justify-content:center;
+        }
+        main {
+            font-family:Roboto, sans-serif;
+            max-width:min(640px, calc(100vw - 4rem));
+            counter-reset:leaderboard;
+        }
+        .handwriting {
+            font-family:'Nanum Pen Script', sans-serif;
+        }
+        p {
+            font-size:1.25rem;
+            line-height:1.2;
+        }
+        #leaderboard {
+            width:100%;
+            min-height:500px;
+        }
+        .dbl-border {
+            --bW:.1rem;
+            --bC:#000;
+            --bR:1rem;
+            --bP:.5rem;
+            position:relative;
+            border:var(--bW) solid var(--bC);
+            border-radius:var(--bR);
+        }
+        .dbl-border::before {
+            content:"";
+            border:var(--bW) solid var(--bC);
+            border-radius:var(--bR);
+            position:absolute;
+            width:100%;
+            height:100%;
+            top:var(--bP);
+            left:var(--bP);
+            display:block;
+            z-index:-1;
+        }
+        .row {
+            --bR:.5rem;
+            --bP:.25rem;
+            counter-increment:leaderboard;
+            padding:.5rem 1rem;
+            margin:1rem;
+            margin-left:2rem;
+            display:flex;
+            font-size:1.25rem;
+            position:relative;
+            background:#fff;
+        }
+        .row::after {
+            content:counter(leaderboard) ".";
+            position:absolute;
+            height:100%;
+            width:2rem;
+            display:block;
+            top:0;
+            left:-2rem;
+            display:flex;
+            align-items:center;
+            justify-content:flex-start;
+            font-weight:bold;
+            font-size:1.25em;
+        }
+        .row [data-address] {
+            flex:1 0 auto;
+            display:flex;
+            align-items:center;
+        }
+        .row [data-poaps] {
+            width:160px;
+            flex:0 0 auto;
+        }
+        .row [data-poaps] {
+            display:flex;
+        }
+        .row [data-poaps] > span {
+            width:1.5rem;
+            overflow:visible;
+            flex:0 0 auto;
+        }
+        .row [data-poaps] > span > img {
+            height:3rem;
+            width:3rem;
+            max-width:initial;
+        }
+    </style>
+    <title>EthTLV 2023 - POAP Leaderboard</title>
+</head>
+<body class="body">
+    <header>
+<img src="https://uploads-ssl.webflow.com/638f6d3a51fdb01e87f23f46/63b59798f4c5664a622b4782_Web3_TLV-cropped.png" loading="lazy" width="300" sizes="(max-width: 479px) 83vw, 300px" srcset="https://uploads-ssl.webflow.com/638f6d3a51fdb01e87f23f46/63b59798f4c5664a622b4782_Web3_TLV-cropped-p-500.png 500w, https://uploads-ssl.webflow.com/638f6d3a51fdb01e87f23f46/63b59798f4c5664a622b4782_Web3_TLV-cropped-p-800.png 800w, https://uploads-ssl.webflow.com/638f6d3a51fdb01e87f23f46/63b59798f4c5664a622b4782_Web3_TLV-cropped-p-1080.png 1080w, https://uploads-ssl.webflow.com/638f6d3a51fdb01e87f23f46/63b59798f4c5664a622b4782_Web3_TLV-cropped.png 1491w" alt="" class="image-9">
+    </header>
+    <main>
+        <p>
+            EthTLV 2023 POAP game lets you climb the leaderboard by collecting POAPs from all the EthTLV side-events!
+        </p>
+        <h3 class="handwriting">Leaderboard</h3>
+        <section id="leaderboard">
+        </section>
+    </main>
+</body>
+</html>
