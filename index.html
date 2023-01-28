@@ -18,7 +18,7 @@
         }
         main {
             font-family:Roboto, sans-serif;
-            max-width:min(640px, calc(100vw - 4rem));
+            width:min(640px, calc(100vw - 4rem));
             counter-reset:leaderboard;
         }
         .handwriting {
@@ -86,10 +86,10 @@
         }
         .row [data-poaps] {
             width:160px;
-            flex:0 0 auto;
-        }
-        .row [data-poaps] {
+            flex:0 1 auto;
+            cursor:pointer;
             display:flex;
+            flex-wrap:wrap;
         }
         .row [data-poaps] > span {
             width:1.5rem;
@@ -100,6 +100,50 @@
             height:3rem;
             width:3rem;
             max-width:initial;
+        }
+
+        #gallery {
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin:auto;
+            max-width:min(640px, calc(100vw - 4rem));
+            height:80%;
+            background:#fff;
+            display: flex;
+            flex-direction: column;
+        }
+        #gallery::before {
+            background:rgba(255, 215, 59, 0.58);
+        }
+        #gallery [data-images] {
+            display:grid;
+            grid-template-columns:repeat(3, 1fr);
+            column-gap:.5rem;
+            row-gap:.5rem;
+            padding:0 .5rem;
+            overflow:auto;
+            scrollbar-width: none;
+        }
+        #gallery [data-images]::-webkit-scrollbar { 
+            display: none;
+        }
+        #gallery [data-topbar] {
+            padding: 1rem 1rem;
+            font-size: 2rem;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        #gallery [data-topbar] [data-close] {
+            background:transparent;
+            border:0;
+        }
+
+        .hidden {
+            display:none!important;
         }
     </style>
     <title>EthTLV 2023 - POAP Leaderboard</title>
@@ -116,5 +160,6 @@
         <section id="leaderboard">
         </section>
     </main>
+    <section id="gallery" class="hidden dbl-border"></section>
 </body>
 </html>
