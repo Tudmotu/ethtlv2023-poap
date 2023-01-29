@@ -40,6 +40,7 @@
             --bC:#000;
             --bR:1rem;
             --bP:.5rem;
+            --bSB:transparent;
             position:relative;
             border:var(--bW) solid var(--bC);
             border-radius:var(--bR);
@@ -55,6 +56,7 @@
             left:var(--bP);
             display:block;
             z-index:-1;
+            background:var(--bSB);
         }
         .row {
             --bR:.5rem;
@@ -142,6 +144,7 @@
             font-size: 2rem;
             display: flex;
             justify-content: space-between;
+            align-items:center;
             margin-bottom: 1rem;
         }
         #gallery [data-topbar] [data-close] {
@@ -149,6 +152,54 @@
             border:0;
             font-size:3rem;
             cursor:pointer;
+        }
+
+        #links {
+            display:flex;
+            justify-content:center;
+            column-gap:2rem;
+            row-gap:2rem;
+            font-family:'Nanum Pen Script', sans-serif;
+            align-items:center;
+            flex-wrap:wrap;
+            margin:2rem 0;
+        }
+        #links a {
+            --bP:.75rem;
+            --bR:10px;
+            --bSB:#fdf8ec;
+            padding:.5rem 1rem;
+            background:#fff;
+            text-decoration:none;
+            text-transform:uppercase;
+            font-size:1.75rem;
+            color:#000;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex:1 0 33%;
+            text-align:center;
+        }
+        #links a[data-telegram] {
+            background:#ffbee0;
+        }
+        #links a[data-events] {
+            background:#4b434a;
+            color:#fff;
+        }
+        #links a[data-events]::after,
+        #links a[data-telegram]::after {
+            content:"";
+            width:45px;
+            height:45px;
+            display:inline-block;
+            margin-left:.5rem;
+        }
+        #links a[data-telegram]::after {
+            background:url('./tg-icon.png') no-repeat center / contain;
+        }
+        #links a[data-events]::after {
+            background:url('./ethtlv.png') no-repeat 0 0 / contain;
         }
 
         .hidden {
@@ -165,6 +216,10 @@
         <p>
             EthTLV 2023 POAP game lets you climb the leaderboard by collecting POAPs from all the EthTLV side-events!
         </p>
+        <section id="links">
+            <a class="dbl-border" data-events href="https://www.ethtlv.net/">Look at events</a>
+            <a class="dbl-border" data-telegram href="https://t.me/ethTLV">Join the community</a>
+        </section>
         <h1 class="handwriting">Leaderboard</h1>
         <section id="leaderboard">
         </section>
