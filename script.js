@@ -15,7 +15,7 @@ function createRow (entry) {
     const html = `
         <span data-address>${label}</span>
         <span data-poaps>${poaps.map(poap => {
-            return `<span><img src="./poaps/${poap}.png" /></span>`;
+            return `<span><img src="./poaps/${poap}.png" data-user="${label}" data-eid="${poap}" alt="logo for poap id ${poap}" /></span>`;
         }).join('')}</span>
     `;
 
@@ -48,7 +48,13 @@ table.addEventListener('click', e => {
 
         const images = Array.from(poapsContainer.querySelectorAll('img'));
         for (let img of images) {
-            imagesContainer.appendChild(img.cloneNode());
+            img = img.cloneNode();
+            const { eid: poapId, user } = img.dataset;
+            const a = document.createElement('a');
+            a.target = '_blank';
+            a.href = `https://welook.io/${user}/poap/${poapId}`;
+            a.appendChild(img);
+            imagesContainer.appendChild(a);
         }
         gallery.replaceChildren(topbar, imagesContainer);
         gallery.classList.remove('hidden');
