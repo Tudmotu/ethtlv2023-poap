@@ -26,8 +26,15 @@ function createRow (entry) {
     return el;
 }
 
-for (let entry of leaderboard) {
-    table.appendChild(createRow(entry))
+if (leaderboard.length === 0) {
+    table.innerHTML = 'No results';
+}
+else {
+    table.innerHTML = '';
+
+    for (let entry of leaderboard) {
+        table.appendChild(createRow(entry))
+    }
 }
 
 table.addEventListener('click', e => {

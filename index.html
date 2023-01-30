@@ -52,6 +52,24 @@
             width:100%;
             min-height:500px;
         }
+        #leaderboard [data-loading] {
+            width:100%;
+            height:100%;
+            display:flex;
+            align-items:center;
+            font-family:monospace;
+            font-size:2rem;
+        }
+        #leaderboard [data-loading]::before {
+            content:"Loading";
+            animation:loading 2s linear infinite;
+        }
+        @keyframes loading {
+            0% { content: "Loading" }
+            25% { content: "Loading." }
+            50% { content: "Loading.." }
+            75% { content: "Loading..." }
+        }
         .dbl-border {
             --bW:.1rem;
             --bC:#000;
@@ -239,6 +257,7 @@
         </section>
         <h1 class="handwriting">Leaderboard</h1>
         <section id="leaderboard">
+            <div data-loading></div>
         </section>
     </main>
     <section id="gallery" class="hidden dbl-border"></section>
