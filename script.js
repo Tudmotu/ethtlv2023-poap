@@ -1,4 +1,4 @@
-import { eventDates } from './eventDates.js';
+import { eventDates, eventLinks } from './eventDates.js';
 
 const apiResponse = await fetch('https://b3tzzxzusi.execute-api.eu-central-1.amazonaws.com/default/ethtlv2023-poap');
 const leaderboard = await apiResponse.json();
@@ -109,9 +109,8 @@ const DAY = 86400;
 const timeline = document.querySelector('[data-timeline]');
 
 document.getElementById('timeline').addEventListener('click', e => {
-    console.log('CLICKED')
     onPoapsClick(e, (user, poapId) => {
-        return `https://welook.io/poap/${poapId}`;
+        return eventLinks[poapId];
     }, e.target.closest('[data-timepoint]').querySelector('[data-date]').textContent);
 });
 
