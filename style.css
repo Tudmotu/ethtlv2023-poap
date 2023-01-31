@@ -7,7 +7,7 @@ body {
     background-position: 0px 0px;
     background-size: auto;
 }
-body::after {
+body:not(.debug)::after {
     position:fixed;
     top:0; bottom:0; left:0; right:0;
     background:#fffa;
@@ -19,7 +19,6 @@ body::after {
     align-items:center;
     justify-content:center;
     text-align:center;
-    /*display:none;*/
 }
 header {
     display:flex;

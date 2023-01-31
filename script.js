@@ -1,5 +1,9 @@
 import { eventDates, eventLinks } from './eventDates.js';
 
+if (window.location.search.includes('?debug')) {
+    document.body.classList.add('debug');
+}
+
 const apiResponse = await fetch('https://b3tzzxzusi.execute-api.eu-central-1.amazonaws.com/default/ethtlv2023-poap');
 const leaderboard = await apiResponse.json();
 const main = document.querySelector('main');
