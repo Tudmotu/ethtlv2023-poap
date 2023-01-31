@@ -19,6 +19,7 @@ body::after {
     align-items:center;
     justify-content:center;
     text-align:center;
+    /*display:none;*/
 }
 header {
     display:flex;
@@ -246,7 +247,6 @@ span.poap-icon > img {
     border-width: 0 0 2px 0;
     font-family:'Nanum Pen Script', sans-serif;
     font-size:2rem;
-    z-index:-1;
 }
 
 [data-timepoint] {

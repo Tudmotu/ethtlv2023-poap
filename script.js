@@ -47,29 +47,31 @@ else {
     }
 }
 
-table.addEventListener('click', e => {
+function onPoapsClick (e, href = () => '', title = false) {
     const poapsContainer = e.target.closest('[data-poaps]');
 
     if (poapsContainer) {
+        const images = Array.from(poapsContainer.querySelectorAll('img'));
         const topbar = document.createElement('div');
         topbar.dataset.topbar = '';
         topbar.classList.add('handwriting');
-        const address = poapsContainer.parentNode.querySelector('[data-address]').textContent;
+        if (title === false) {
+            title = poapsContainer.parentNode.querySelector('[data-address]').textContent;
+        }
         topbar.innerHTML = `
-            <span>${address}</span>
+            <span>${title}</span>
             <button data-close class="handwriting">X</button>
         `;
 
         const imagesContainer = document.createElement('div');
         imagesContainer.dataset.images = '';
 
-        const images = Array.from(poapsContainer.querySelectorAll('img'));
         for (let img of images) {
             img = img.cloneNode();
             const { eid: poapId, label } = img.dataset;
             const a = document.createElement('a');
             a.target = '_blank';
-            a.href = `https://welook.io/${label}/poap/${poapId}`;
+            a.href = href(label, poapId);
             a.appendChild(img);
             imagesContainer.appendChild(a);
         }
@@ -84,6 +86,12 @@ table.addEventListener('click', e => {
             header.classList.remove('hidden');
         });
     }
+}
+
+table.addEventListener('click', e => {
+    onPoapsClick(e, (user, poapId) => {
+        return `https://welook.io/${user}/poap/${poapId}`;
+    });
 });
 
 const now = new Date();
@@ -99,6 +107,14 @@ const groupedEvents = Object.entries(Object.entries(eventDates).reduce((result, 
 
 const DAY = 86400;
 const timeline = document.querySelector('[data-timeline]');
+
+document.getElementById('timeline').addEventListener('click', e => {
+    console.log('CLICKED')
+    onPoapsClick(e, (user, poapId) => {
+        return `https://welook.io/poap/${poapId}`;
+    }, e.target.closest('[data-timepoint]').querySelector('[data-date]').textContent);
+});
+
 const earliestPoint = Math.min(today, groupedEvents[0][0]);
 const latestPoint = groupedEvents[groupedEvents.length - 1][0];
 const timespan = latestPoint - earliestPoint;
