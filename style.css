@@ -116,19 +116,19 @@ p {
     display:flex;
     align-items:center;
 }
-.row [data-poaps] {
+.poaps-list {
     width:160px;
     flex:0 1 auto;
     cursor:pointer;
     display:flex;
     flex-wrap:wrap;
 }
-.row [data-poaps] > span {
+span.poap-icon {
     width:1.5rem;
     overflow:visible;
     flex:0 0 auto;
 }
-.row [data-poaps] > span > img {
+span.poap-icon > img {
     height:3rem;
     width:3rem;
     max-width:initial;
@@ -227,6 +227,59 @@ p {
 }
 #links a[data-events]::after {
     background:url('./ethtlv.png') no-repeat 0 0 / contain;
+}
+
+#timeline {
+    position:relative;
+    overflow-x:auto;
+    scrollbar-width: none;
+}
+#timeline::-webkit-scrollbar { 
+    display: none;
+}
+
+[data-timeline] {
+    height:120px;
+    position:relative;
+    margin-left:50%;
+    border:solid #000;
+    border-width: 0 0 2px 0;
+    font-family:'Nanum Pen Script', sans-serif;
+    font-size:2rem;
+    z-index:-1;
+}
+
+[data-timepoint] {
+    position:absolute;
+    bottom:1rem;
+    width:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+[data-timepoint][data-nottoday] {
+    filter:grayscale(1);
+    color:#888;
+}
+
+[data-timepoint] .poaps-list {
+    justify-content: center;
+    position: relative;
+    left: -.75rem;
+}
+
+[data-timepoint] [data-date] {
+    width:160px;
+    text-align:center;
+}
+
+[data-timeline] [data-tick] {
+    height:1rem;
+    width:2px;
+    background:#000;
+    position:absolute;
+    bottom:0;
 }
 
 .hidden {
