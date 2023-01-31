@@ -113,9 +113,11 @@ p {
     font-size:1.25em;
 }
 .row [data-address] {
-    flex:1 0 auto;
+    flex:1 1 auto;
     display:flex;
     align-items:center;
+    word-break: break-all;
+    margin-right:1rem;
 }
 .poaps-list {
     width:160px;
