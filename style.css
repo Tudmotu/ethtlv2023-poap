@@ -163,6 +163,11 @@ span.poap-icon > img {
     overflow:auto;
     scrollbar-width: none;
 }
+@media (max-width:640px) {
+    #gallery [data-images] {
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
 #gallery [data-images]::-webkit-scrollbar { 
     display: none;
 }
