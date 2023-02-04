@@ -51,7 +51,7 @@ else {
     }
 }
 
-function onPoapsClick (e, href = () => '', title = false) {
+function onPoapsClick (e, href = () => '', title = false, titleHref = null) {
     const poapsContainer = e.target.closest('[data-poaps]');
 
     if (poapsContainer) {
@@ -63,7 +63,9 @@ function onPoapsClick (e, href = () => '', title = false) {
             title = poapsContainer.parentNode.querySelector('[data-address]').textContent;
         }
         topbar.innerHTML = `
-            <span>${title}</span>
+            ${titleHref ? `<a href="${titleHref}" target=_blank>` : '<span>'}
+                ${title}
+            ${titleHref ? `</a>` : '</span>'}
             <button data-close class="handwriting">X</button>
         `;
 
@@ -93,9 +95,10 @@ function onPoapsClick (e, href = () => '', title = false) {
 }
 
 table.addEventListener('click', e => {
+    const user = e.target.closest('.row').querySelector('[data-address]').textContent;
     onPoapsClick(e, (user, poapId) => {
         return `https://welook.io/${user}/poap/${poapId}`;
-    });
+    }, false, `https://welook.io/${user}`);
 });
 
 const now = new Date();
