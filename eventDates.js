@@ -20,6 +20,7 @@ const eventDates = {
     '99047': new Date('February 2, 2023').getTime(),
     '99044': new Date('February 5, 2023').getTime(),
     '99608': new Date('February 5, 2023').getTime(),
+    '99923': new Date('February 5, 2023').getTime(),
     '99610': new Date('February 6, 2023').getTime(),
     '99850': new Date('February 7, 2023').getTime(),
     '99614': new Date('February 7, 2023').getTime(),
@@ -57,6 +58,7 @@ const eventLinks = {
     '98839': 'https://www.eventbrite.com/e/generative-art-on-chain-tickets-518644237877',
     '99047': 'https://www.eventbrite.co.uk/e/tel-aviv-starknet-builders-meet-up-tickets-526461028107',
     '99044': 'https://www.eventbrite.com/e/the-future-of-account-abstraction-on-starknet-tickets-516964092517',
+    '99923': 'https://www.eventbrite.com/e/web3-builders-meetup-tickets-528390098007',
 };
 
 export { eventDates, eventLinks };
