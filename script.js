@@ -22,12 +22,7 @@ function renderPoapIcons (poaps, label = '') {
 }
 
 function createRow (entry) {
-    const { address, poaps } = entry;
-    let label;
-    if (window.innerWidth > 800 || address.length < 20) label = address;
-    else {
-        label = `${address.substring(0, 6)}...${address.substring(address.length - 4, address.length)}`
-    }
+    const { address: label, poaps } = entry;
     const html = `
         <span data-address>${label}</span>
         ${renderPoapIcons(poaps, label)}
@@ -63,7 +58,7 @@ function onPoapsClick (e, href = () => '', title = false, titleHref = null) {
             title = poapsContainer.parentNode.querySelector('[data-address]').textContent;
         }
         topbar.innerHTML = `
-            ${titleHref ? `<a href="${titleHref}" target=_blank>` : '<span>'}
+            ${titleHref ? `<a href="${titleHref}" target=_blank data-title>` : '<span data-title>'}
                 ${title}
             ${titleHref ? `</a>` : '</span>'}
             <button data-close class="handwriting">X</button>

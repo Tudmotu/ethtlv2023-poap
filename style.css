@@ -98,6 +98,17 @@ p {
     position:relative;
     background:#fff;
 }
+@media (max-width: 640px) {
+    .row {
+        flex-direction:column;
+        row-gap:1rem;
+    }
+
+    .row [data-poaps] {
+        left: -0.25rem;
+        position: relative;
+    }
+}
 .row::after {
     content:counter(leaderboard) ".";
     position:absolute;
@@ -182,11 +193,17 @@ span.poap-icon > img {
     align-items:center;
     margin-bottom: 1rem;
 }
+#gallery [data-topbar] [data-title] {
+    flex: 1 1 auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 #gallery [data-topbar] [data-close] {
     background:transparent;
     border:0;
     font-size:3rem;
     cursor:pointer;
+    flex: 0 0 auto;
 }
 
 #links {
