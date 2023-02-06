@@ -10,6 +10,10 @@ const main = document.querySelector('main');
 const header = document.querySelector('header');
 const table = document.getElementById('leaderboard');
 const gallery = document.getElementById('gallery');
+const timelineContainer = document.getElementById('timeline');
+const timelineTitle = document.getElementById('timelineTitle');
+timelineTitle.classList.remove('hidden');
+timelineContainer.classList.remove('hidden');
 
 function renderPoapIcons (poaps, label = '') {
     return `
