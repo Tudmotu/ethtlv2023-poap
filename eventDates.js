@@ -5,7 +5,6 @@ const eventDates = {
     '98813': new Date('February 2, 2023').getTime(),
     '98815': new Date('February 3, 2023').getTime(),
     '98818': new Date('February 5, 2023').getTime(),
-    '98822': new Date('February 6, 2023').getTime(),
     '98823': new Date('February 6, 2023').getTime(),
     '98826': new Date('February 6, 2023').getTime(),
     '98827': new Date('February 7, 2023').getTime(),
@@ -27,6 +26,7 @@ const eventDates = {
     '99616': new Date('February 8, 2023').getTime(),
     '99851': new Date('February 9, 2023').getTime(),
     '97863': new Date('February 8, 2023').getTime(),
+    '99348': new Date('February 7, 2023').getTime(),
 };
 
 const eventLinks = {
@@ -44,7 +44,6 @@ const eventLinks = {
     '98813': 'https://www.eventbrite.com/e/creator-nations-tel-aviv-vip-private-networking-event-tickets-518990864647?aff=ebdsoporgprofile',
     '98815': 'https://www.eventbrite.com/e/starknet-101-workshop-tickets-513833318287',
     '98818': 'https://lu.ma/ejycyizu',
-    '98822': 'https://www.ethtlv.net/#',
     '98823': 'https://www.eventbrite.com/e/web-30-happy-hour-tickets-515940691497',
     '98826': 'https://www.eventbrite.com/e/starknight-tickets-523625667467',
     '98827': 'https://www.eventbrite.com/e/building-blocks-23-tickets-491657489787',
@@ -59,6 +58,7 @@ const eventLinks = {
     '99047': 'https://www.eventbrite.co.uk/e/tel-aviv-starknet-builders-meet-up-tickets-526461028107',
     '99044': 'https://www.eventbrite.com/e/the-future-of-account-abstraction-on-starknet-tickets-516964092517',
     '99923': 'https://www.eventbrite.com/e/web3-builders-meetup-tickets-528390098007',
+    '99348': 'https://buildingblockstlv.com/',
 };
 
 export { eventDates, eventLinks };
