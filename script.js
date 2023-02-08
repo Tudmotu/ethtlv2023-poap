@@ -50,52 +50,54 @@ else {
     }
 }
 
-function onPoapsClick (e, href = () => '', title = false, titleHref = null) {
-    const poapsContainer = e.target.closest('[data-poaps]');
+function onPoapsClick (poapsContainer, href = () => '', title = false, titleHref = null) {
+    const images = Array.from(poapsContainer.querySelectorAll('img'));
+    const topbar = document.createElement('div');
+    topbar.dataset.topbar = '';
+    topbar.classList.add('handwriting');
 
-    if (poapsContainer) {
-        const images = Array.from(poapsContainer.querySelectorAll('img'));
-        const topbar = document.createElement('div');
-        topbar.dataset.topbar = '';
-        topbar.classList.add('handwriting');
-        if (title === false) {
-            title = poapsContainer.parentNode.querySelector('[data-address]').textContent;
-        }
-        topbar.innerHTML = `
-            ${titleHref ? `<a href="${titleHref}" target=_blank data-title>` : '<span data-title>'}
-                ${title}
-            ${titleHref ? `</a>` : '</span>'}
-            <button data-close class="handwriting">X</button>
-        `;
-
-        const imagesContainer = document.createElement('div');
-        imagesContainer.dataset.images = '';
-
-        for (let img of images) {
-            img = img.cloneNode();
-            const { eid: poapId, label } = img.dataset;
-            const a = document.createElement('a');
-            a.target = '_blank';
-            a.href = href(label, poapId);
-            a.appendChild(img);
-            imagesContainer.appendChild(a);
-        }
-        gallery.replaceChildren(topbar, imagesContainer);
-        gallery.classList.remove('hidden');
-        main.classList.add('hidden');
-        header.classList.add('hidden');
-
-        topbar.querySelector('[data-close]').addEventListener('click', () => {
-            gallery.classList.add('hidden');
-            main.classList.remove('hidden');
-            header.classList.remove('hidden');
-        });
+    if (title === false) {
+        title = poapsContainer.parentNode.querySelector('[data-address]').textContent;
     }
+
+    topbar.innerHTML = `
+        ${titleHref ? `<a href="${titleHref}" target=_blank data-title>` : '<span data-title>'}
+            ${title}
+        ${titleHref ? `</a>` : '</span>'}
+        <button data-close class="handwriting">X</button>
+    `;
+
+    const imagesContainer = document.createElement('div');
+    imagesContainer.dataset.images = '';
+
+    for (let img of images) {
+        img = img.cloneNode();
+        const { eid: poapId, label } = img.dataset;
+        const a = document.createElement('a');
+        a.target = '_blank';
+        a.href = href(label, poapId);
+        a.appendChild(img);
+        imagesContainer.appendChild(a);
+    }
+
+    gallery.replaceChildren(topbar, imagesContainer);
+    gallery.classList.remove('hidden');
+    main.classList.add('hidden');
+    header.classList.add('hidden');
+
+    topbar.querySelector('[data-close]').addEventListener('click', () => {
+        gallery.classList.add('hidden');
+        main.classList.remove('hidden');
+        header.classList.remove('hidden');
+    });
 }
 
 table.addEventListener('click', e => {
-    const user = e.target.closest('.row').querySelector('[data-address]').textContent;
-    onPoapsClick(e, (user, poapId) => {
+    const row = e.target.closest('.row');
+    if (row === null) return;
+    const user = row.querySelector('[data-address]').textContent;
+    const poapsContainer = row.querySelector('[data-poaps]');
+    onPoapsClick(poapsContainer, (user, poapId) => {
         return `https://welook.io/${user}/poap/${poapId}`;
     }, false, `https://welook.io/${user}`);
 });
@@ -115,7 +117,9 @@ const DAY = 86400;
 const timeline = document.querySelector('[data-timeline]');
 
 document.getElementById('timeline').addEventListener('click', e => {
-    onPoapsClick(e, (user, poapId) => {
+    const poapsContainer = e.target.closest('[data-poaps]');
+    if (!poapsContainer) return;
+    onPoapsClick(poapsContainer, (user, poapId) => {
         return eventLinks[poapId];
     }, e.target.closest('[data-timepoint]').querySelector('[data-date]').textContent);
 });

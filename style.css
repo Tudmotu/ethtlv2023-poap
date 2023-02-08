@@ -97,6 +97,7 @@ p {
     font-size:1.25rem;
     position:relative;
     background:#fff;
+    cursor:pointer;
 }
 @media (max-width: 640px) {
     .row {
